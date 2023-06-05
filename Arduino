@@ -1,0 +1,105 @@
+// Declare global objects and call up additional files the program needs to use.  Declare variables and 
+// assign/them to CP pin values.
+int mySwitch = 21;
+int topButton = 4;
+int bottomButton = 19;
+int led2 = 3;
+int led3 = 10;
+int led1 = 2;
+int delaytime1 = 250;
+
+// Things that only need to be done once at the beginning of the program. Setting up the CP device.
+void setup() {
+  
+pinMode(mySwitch, INPUT);
+pinMode(topButton, INPUT);
+pinMode(bottomButton, INPUT);
+pinMode(led2, OUTPUT);
+pinMode(led3, OUTPUT);
+pinMode(led1, OUTPUT);
+
+
+
+   Serial.begin(9600); //starts serial communication through the USB, the value is how fast the data is to be sent
+}
+
+ /* Things that happen repeatedly in the program loop while the program is running. The code is executed in the order coded. */
+void loop() {
+  //look at (read) the current state of the switch and assign its value to a variable
+
+int switchValue=digitalRead(mySwitch);
+
+  // determine if the variable is HIGH, and make the wristband LED’s blink
+
+if (switchValue==1) 
+
+{
+oddLights();
+
+}
+  // determine if the variable is LOW, and make the wristband LED’s turn off
+
+  else
+
+{
+
+
+blinkLights();
+
+}
+}
+
+// The fourth section is for functions that are called up by the third section.
+
+void   blinkLights()
+{
+digitalWrite(led1, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led1, LOW);  
+ delay(delaytime1);
+ digitalWrite(led2, HIGH);    
+ delay(delaytime1);
+ digitalWrite(led2, LOW);  
+ delay(delaytime1);
+ digitalWrite(led3, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led3, LOW);  
+ delay(delaytime1);
+  digitalWrite(led3, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led3, LOW);  
+ delay(delaytime1);
+ digitalWrite(led2, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led2, LOW);  
+ delay(delaytime1);
+ digitalWrite(led1, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led1, LOW); 
+ delay(delaytime1);
+}
+
+void   oddLights()
+{
+ digitalWrite(led1, HIGH);
+  digitalWrite(led3, HIGH);
+  digitalWrite(led2, HIGH) ;
+  delay(delaytime1);
+   digitalWrite(led1, HIGH);
+  digitalWrite(led3, HIGH);
+  digitalWrite(led2, HIGH) ;
+  delay(delaytime1);
+   digitalWrite(led1, HIGH);
+  digitalWrite(led3, HIGH);
+  digitalWrite(led2, HIGH) ;
+  delay(delaytime1);
+   digitalWrite(led1, LOW);
+  digitalWrite(led3, LOW);
+  digitalWrite(led2, LOW) ;
+  delay(delaytime1);
+}
+
+
+
+
+
