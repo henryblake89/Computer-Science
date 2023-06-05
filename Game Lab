@@ -1,0 +1,24 @@
+var ball = createSprite(200, 200);
+var paddle = createSprite(200, 300);
+ball.setAnimation("ball_1");
+paddle.setAnimation("paddle_1");
+// 
+function draw() {
+  background("white");
+  createEdgeSprites();
+  if (keyDown("space")) {
+    ball.velocityX = 5;
+    ball.velocityY = 5;
+  }
+  ball.bounceOff(topEdge);
+  ball.bounceOff(rightEdge);
+  ball.bounceOff(leftEdge);
+  ball.bounceOff(paddle);
+  if (keyDown("right")) {
+    paddle.x = paddle.x + 3;
+  }
+  if (keyDown("left")) {
+    paddle.x = paddle.x + -3;
+  }
+  drawSprites();
+}
